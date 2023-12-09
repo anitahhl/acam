@@ -2,13 +2,14 @@ from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
-import base64
+from uvicorn.config import Config
 import uvicorn
 import style
 import os
 import uuid
 
 app = FastAPI()
+config = Config(app, keep_alive_timeout=60)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="./static/templates")
