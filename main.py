@@ -44,4 +44,4 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app="main:app", host="0.0.0.0", port=8000, reload=True, keep_alive_timeout=60)
+    uvicorn.run(app="main:app", host="0.0.0.0", port=8000, reload=True, timeout-keep-alive=60)
