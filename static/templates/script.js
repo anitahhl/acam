@@ -7,9 +7,9 @@ setTimeout(function () {
 
 
 $(document).ready(function(){
-  
+    
     const supports = navigator.mediaDevices.getSupportedConstraints();
-    if (!supports['facingMode']) {
+    if (!supports || !supports['facingMode']) {
         alert('Browser not supported.');
         return;
     }
