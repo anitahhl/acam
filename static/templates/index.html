@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Style Transfer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Waiting+for+the+Sunrise&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', path='/templates/style.css') }}" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="{{ url_for('static', path='/icons/icon.png') }}" />
+
+    <script src="https://kit.fontawesome.com/1365ca1271.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script src="{{ url_for('static', path='/templates/script.js') }}" crossorigin="anonymous"></script>
+</head>
+
+<body class="w-full min-h-screen">
+    <!-- Desktop -->
+    <div class="hidden h-screen sm:grid gap-7 justify-items-center place-content-center">
+        <img class="w-24" src="{{ url_for('static', path='/images/web-qrcode.png') }}">
+        <p>Use the mobile phone for the best experience.</p>
+    </div>
+
+
+    <!-- Mobile -->
+    <div class="sm:hidden relative max-w-lg w-full mx-auto">
+        <!-- Welcome -->
+        <div id="welcome" class="h-screen bg-white grid justify-items-center items-end">
+            <div id="applogo" class="w-full">
+                <p class="text-center text-4xl">anthropo_cam</p>
+            </div>
+            <div class="mb-24">
+                <img class="h-5 border border-black" src="{{ url_for('static', path='/images/logo.png') }}" alt="logo">
+            </div>
+        </div>
+
+        
+        <!-- Main -->
+        <div id="main" class="hidden h-screen relative bg-white w-full">
+            <div class="justify-center">
+
+                <!-- Camera -->
+                <div id="cameraPage" class="flex flex-col min-h-full">
+                    <div class="flex justify-between px-5 py-3">
+                        
+                        <label id="uploadImage" class="p-1">
+                            <i class="fa-regular fa-images fa-lg"></i>
+                            <input type='file' id="uploadImageInput" class="hidden" name="file" accept="image/*" />
+                        </label>
+
+                        <button id="switch" class="p-1"><i class="fa-solid fa-arrows-rotate fa-lg"></i></button>
+                    </div>
+    
+                    <div id="cameraViewContainer" class="viewContainer w-full relative bg-black flex items-center">
+                        <video id="cameraView" class="bg-black w-full" playsinline muted></video>
+                    </div>
+                    
+                    <!-- Capture -->
+                    <div class="w-full py-12 grid justify-items-center items-top flex-1 px-2">
+                        <button id="capture" class="w-16 h-16 rounded-full border-4 border-black"><p></p></button>
+                    </div>
+                </div>
+
+
+                <div id="photoPage" class="hidden flex flex-col min-h-full">
+                    <div class="flex justify-between px-5 py-3">
+                        <button id="goBack" class="p-1"><i class="fa-solid fa-chevron-left fa-lg"></i></button>
+                        <button id="download" class="p-1"><i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i></button>
+                    </div>
+    
+                    <div id="photoViewContainer" class="viewContainer w-full relative flex items-center">
+                        <img id="photoView" class="h-full object-cover" src="{{ url_for('static', path='/images/style-images/gray.png') }}">
+                    </div>
+
+                    <!-- Select Style -->
+                    <div id="styleSelection" class="w-full py-8 grid justify-items-left items-center flex-1 px-2">
+                        <div class="flex overflow-x-scroll">
+                            <button class="style-button grid content-between justify-items-center p-2" data-style="0">
+                                <div class="w-24 h-28">
+                                    <img class="h-full object-cover rounded-lg" src="{{ url_for('static', path='/images/style-images/bottles.jpg') }}">
+                                </div>
+                                <p class="text-lg py-1">Bottles</p>
+                            </button>
+                        
+                            <button class="style-button grid content-between justify-items-center p-2" data-style="4">
+                                <div class="w-24 h-28">
+                                    <img class="h-full object-cover rounded-lg" src="{{ url_for('static', path='/images/style-images/eutrophication.jpg') }}">
+                                </div>
+                                <p class="text-lg py-1">Eutrophic</p>
+                            </button>
+                        
+                            <button class="style-button grid content-between justify-items-center p-2" data-style="1">
+                                <div class="w-24 h-28">
+                                    <img class="h-full object-cover rounded-lg" src="{{ url_for('static', path='/images/style-images/cables.jpg') }}">
+                                </div>
+                                <p class="text-lg py-1">Cables</p>
+                            </button>
+                        
+                            <button class="style-button grid content-between justify-items-center p-2" data-style="3">
+                                <div class="w-24 h-28">
+                                    <img class="h-full object-cover rounded-lg" src="{{ url_for('static', path='/images/style-images/drought.jpg') }}">
+                                </div>
+                                <p class="text-lg py-1">Drought</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading" class="loading-overlay">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

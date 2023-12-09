@@ -1,0 +1,11 @@
+numpy
+Pillow
+piexif
+
+torch
+torchvision
+
+fastapi
+uvicorn
+typing-extensions
+python-multipart
