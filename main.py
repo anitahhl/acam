@@ -2,14 +2,12 @@ from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
-from uvicorn.config import Config
 import uvicorn
 import style
 import os
 import uuid
 
 app = FastAPI()
-config = Config(app, keep_alive_timeout=60)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="./static/templates")
@@ -46,4 +44,4 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app="main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app="main:app", host="0.0.0.0", port=8000, reload=True, keep_alive_timeout=60)
