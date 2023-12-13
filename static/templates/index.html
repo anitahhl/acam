@@ -39,30 +39,33 @@
             <div id="applogo" class="max-w-full">
                 <img class="h-16" src="{{ url_for('static', path='/images/anthropocam_logo.png') }}" alt="logo">
             </div>
-        </div> 
+        </div>               
 
         <!-- Hint Wifi -->
         <div id="hintWifi" class="hidden h-screen bg-white justify-items-center items-end p-10">
             <div id="applogo" class="w-full">
-                <p class="text-center text-lg font-normal">建議在網路訊號良好的地方進行體驗。</p>
-                <br><p class="text-center text-lg font-normal">Suggest experiencing it in a location with a strong internet signal.</p>
+                <p class="text-lg font-normal">建議在網路訊號良好的地方進行體驗。</p>
+                <br>
+                <p class="text-lg font-normal">Suggest experiencing it in a location with a strong internet signal.</p>
             </div>
-            <div class="mb-24 self-center">
-                <button id="hintWifiBtn" class="rounded-full bg-black px-8 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div class="mb-24 self-center w-full">
+                <button id="hintWifiBtn" class="rounded-full bg-black py-2 w-full flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 </button>
             </div>
         </div>
+        
+              
 
         <!-- Hint Usage -->
         <div id="hintUsage" class="hidden h-screen bg-white justify-items-center items-end p-10">
             <div id="applogo" class="w-full">
-                <p class="text-center text-lg font-normal"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的風格，開始轉換！</p>
-                <br><p class="text-center text-lg font-normal">Capture a photo by clicking the shutter button, then choose your preferred style for transformation.</p>
+                <p class="text-lg font-normal"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的風格，開始轉換！</p>
+                <br><p class="text-lg font-normal">Capture a photo by clicking the shutter button, then choose your preferred style for transformation.</p>
             </div>
-            <div class="mb-24 self-center">
-                <button id="hintUsageBtn" class="rounded-full bg-black px-8 p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <div class="mb-24 self-center w-full">
+                <button id="hintUsageBtn" class="rounded-full bg-black py-2 w-full flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
                 </button>
             </div>
         </div>
@@ -178,8 +181,8 @@
                 </div>
             </div>
 
-            <div id="loading" class="loading-overlay">
-                <div class="loading-spinner"></div>
+            <div class="loading-overlay">
+                <div class="loader"></div>
             </div>
         </div>
     </div>
