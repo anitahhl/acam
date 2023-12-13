@@ -44,6 +44,28 @@
             </div>
         </div>
 
+        <!-- Hint Wifi -->
+        <div id="hintWifi" class="hidden h-screen bg-white justify-items-center items-end p-10">
+            <div id="applogo" class="w-full">
+                <p class="text-center text-md">建議在網路訊號良好的地方進行體驗</p>
+                <br><p class="text-center text-md">Suggest experiencing it in a location with a strong internet signal.</p>
+            </div>
+            <div class="mb-24">
+                <button id="hintWifiBtn" class="rounded-full bg-black px-8 p-2"><i class="fa-solid fa-check fa-lg" style="color: #ffffff;"></i></button>
+            </div>
+        </div>
+
+        <!-- Hint Usage -->
+        <div id="hintUsage" class="hidden h-screen bg-white justify-items-center items-end p-10">
+            <div id="applogo" class="w-full">
+                <p class="text-center text-md font-bold">使用說明</p>
+                <p class="text-center text-md"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的風格轉換</p>
+                <br><p class="text-center text-md">Capture a photo by clicking the shutter button, then choose your preferred style for transformation.</p>
+            </div>
+            <div class="mb-24">
+                <button id="hintUsageBtn" class="rounded-full bg-black px-8 p-2"><i class="fa-solid fa-check-double fa-lg" style="color: #ffffff;"></i></button>
+            </div>
+        </div>
         
         <!-- Main -->
         <div id="main" class="hidden h-screen relative bg-white w-full">
@@ -57,6 +79,7 @@
                             <i class="fa-regular fa-images fa-lg"></i>
                             <input type='file' id="uploadImageInput" class="hidden" name="file" accept="image/*" />
                         </label>
+                        <img class="h-10" src="{{ url_for('static', path='/images/anthropocam_logo.png') }}">
 
                         <button id="switch" class="p-1"><i class="fa-solid fa-arrows-rotate fa-lg"></i></button>
                     </div>

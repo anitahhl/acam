@@ -1,13 +1,26 @@
 // Welcome Animation
 setTimeout(function () {
     $("#welcome").fadeOut(0);
-    document.getElementById("main").style.display="grid";
+    document.getElementById("hintWifi").style.display="grid";
     console.log('Why did you open the console? (⑉･̆⌓･̆⑉)');
 }, 500);
 
 
 $(document).ready(function(){
-    
+
+    // Hint
+    $("#hintWifiBtn").click(function() {
+        $('#hintWifi').hide();
+        $('#hintUsage').css('display', 'grid');
+    });
+
+    $("#hintUsageBtn").click(function() {
+        $('#hintUsage').hide();
+        $('#main').css('display', 'grid');
+    });
+
+
+    // Camera
     const supports = navigator.mediaDevices.getSupportedConstraints();
     if (!supports || !supports['facingMode']) {
         alert('Browser not supported.');
