@@ -11,6 +11,10 @@ body {
     margin: 0;
 }
 
+#styleSelection img {
+    pointer-events: none;
+}
+
 #applogo {
     line-height: 30px;
     font-weight: 200;
