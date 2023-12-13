@@ -209,11 +209,11 @@ $(document).ready(function(){
         $('#photoView').css('background-image', 'none');
     
         html2canvas(document.getElementById('photoView'), { width: $('#photoView').outerWidth(), height: $('#photoView').outerHeight() }).then(function(canvas) {
-            var screenshotURL = canvas.toDataURL('image/jpeg', 1.0);
+            var screenshotURL = canvas.toDataURL('image/png', 1.0);
     
             var link = document.createElement('a');
             link.href = screenshotURL;
-            link.download = 'image.jpg';
+            link.download = 'image.png';
     
             document.body.appendChild(link);
             link.click();
