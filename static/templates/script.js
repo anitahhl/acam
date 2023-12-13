@@ -1,7 +1,7 @@
 // Welcome Animation
 setTimeout(function () {
     $("#welcome").fadeOut(0);
-    document.getElementById("hintWifi").style.display="grid";
+    document.getElementById("hintUsage").style.display="grid";
     console.log('Why did you open the console? (⑉･̆⌓･̆⑉)');
 }, 2000);
 
@@ -9,13 +9,13 @@ setTimeout(function () {
 $(document).ready(function(){
 
     // Hint
-    $("#hintWifiBtn").click(function() {
-        $('#hintWifi').hide();
-        $('#hintUsage').css('display', 'grid');
-    });
-
     $("#hintUsageBtn").click(function() {
         $('#hintUsage').hide();
+        $('#hintWifi').css('display', 'grid');
+    });
+
+    $("#hintWifiBtn").click(function() {
+        $('#hintWifi').hide();
         $('#main').css('display', 'grid');
 
         // Camera Start

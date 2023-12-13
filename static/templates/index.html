@@ -39,14 +39,29 @@
             <div id="applogo" class="max-w-full">
                 <img class="h-16" src="{{ url_for('static', path='/images/anthropocam_logo.png') }}" alt="logo">
             </div>
-        </div>               
+        </div>
+        
+        
+        <!-- Hint Usage -->
+        <div id="hintUsage" class="hidden h-screen bg-white justify-items-center items-end p-10">
+            <div id="applogo" class="w-full">
+                <p class="text-lg font-normal"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的人類世風格，開始轉換！</p>
+                <br><p class="text-lg font-normal">Capture a photo by clicking the shutter button, then choose your preferred style for transformation.</p>
+            </div>
+            <div class="mb-24 self-center w-full">
+                <button id="hintUsageBtn" class="rounded-full bg-black py-2 w-full flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+            </div>
+        </div>
+
 
         <!-- Hint Wifi -->
         <div id="hintWifi" class="hidden h-screen bg-white justify-items-center items-end p-10">
             <div id="applogo" class="w-full">
-                <p class="text-lg font-normal">建議在網路訊號良好的地方進行體驗。</p>
+                <p class="text-lg font-normal">建議在網路訊號良好的地方體驗，否則在轉換風格時可能需要更長的等待時間。</p>
                 <br>
-                <p class="text-lg font-normal">Suggest experiencing it in a location with a strong internet signal.</p>
+                <p class="text-lg font-normal">It is recommended to experience this in an area with a good internet signal; otherwise, there may be a longer waiting time during style transformation.</p>
             </div>
             <div class="mb-24 self-center w-full">
                 <button id="hintWifiBtn" class="rounded-full bg-black py-2 w-full flex justify-center">
@@ -55,20 +70,6 @@
             </div>
         </div>
         
-              
-
-        <!-- Hint Usage -->
-        <div id="hintUsage" class="hidden h-screen bg-white justify-items-center items-end p-10">
-            <div id="applogo" class="w-full">
-                <p class="text-lg font-normal"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的風格，開始轉換！</p>
-                <br><p class="text-lg font-normal">Capture a photo by clicking the shutter button, then choose your preferred style for transformation.</p>
-            </div>
-            <div class="mb-24 self-center w-full">
-                <button id="hintUsageBtn" class="rounded-full bg-black py-2 w-full flex justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
-                </button>
-            </div>
-        </div>
         
         <!-- Main -->
         <div id="main" class="hidden h-screen relative bg-white w-full">
