@@ -250,6 +250,7 @@ $(document).ready(function(){
                     success: function (data) {
                         if (data.result) {
                             $("#photoView").attr("src", data.result + "?timestamp=" + new Date().getTime());
+                            $(".loading-overlay").css("display", "none");
                         } else {
                             console.error("Error:", data.error);
                         }
