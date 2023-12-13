@@ -252,8 +252,12 @@ $(document).ready(function(){
             })
             .then(data => {
                 if (data.result) {
+                    function imageLoadCallback() {
+                        $(".loading-overlay").css("display", "none");
+                    }
+                    
+                    $("#photoView").on("load", imageLoadCallback);
                     $("#photoView").attr("src", data.result);
-                    $(".loading-overlay").css("display", "none");
                 } else {
                     console.error("Error:", data.error);
                 }
