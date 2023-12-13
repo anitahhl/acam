@@ -14,10 +14,6 @@ body {
     user-select: none;
 }
 
-img {
-    pointer-events: none;
-}
-
 #applogo {
     line-height: 30px;
     font-weight: 200;
