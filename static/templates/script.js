@@ -249,7 +249,7 @@ $(document).ready(function(){
                     processData: false,
                     success: function (data) {
                         if (data.result) {
-                            $("#photoView").attr("src", "https://d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png"); //data.result + "?timestamp=" + new Date().getTime());
+                            $("#photoView").attr("src", data.result + "?timestamp=" + new Date().getTime());
                         } else {
                             console.error("Error:", data.error);
                         }
