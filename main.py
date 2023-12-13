@@ -31,8 +31,7 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
             img = ImageOps.exif_transpose(img)
             img.save(temp_file)
 
-        res_filepath = style.get_result(unique_filename, temp_file, int(style_index))
-        result = res_filepath.lstrip('.')
+        result = style.get_result(unique_filename, temp_file, int(style_index))
 
     except Exception as ex:
         error = str(ex)

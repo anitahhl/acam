@@ -249,7 +249,7 @@ $(document).ready(function(){
                     processData: false,
                     success: function (data) {
                         if (data.result) {
-                            $("#photoView").attr("src", "https://www.anthropocam.site/" + data.result + "?timestamp=" + new Date().getTime());
+                            $("#photoView").attr("src", data.result + "?timestamp=" + new Date().getTime());
                         } else {
                             console.error("Error:", data.error);
                         }
