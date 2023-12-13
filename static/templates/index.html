@@ -35,14 +35,11 @@
     <!-- Mobile -->
     <div class="sm:hidden relative max-w-lg w-full mx-auto">
         <!-- Welcome -->
-        <div id="welcome" class="h-screen bg-white grid justify-items-center items-end">
-            <div id="applogo" class="w-full">
-                <p class="text-center text-4xl">AnthropoCam</p>
+        <div id="welcome" class="h-screen bg-white flex justify-center items-center">
+            <div id="applogo" class="max-w-full">
+                <img class="h-16" src="{{ url_for('static', path='/images/anthropocam_logo.png') }}" alt="logo">
             </div>
-            <div class="mb-24 self-center">
-                <img class="h-8" src="{{ url_for('static', path='/images/logo.png') }}" alt="logo">
-            </div>
-        </div>
+        </div> 
 
         <!-- Hint Wifi -->
         <div id="hintWifi" class="hidden h-screen bg-white justify-items-center items-end p-10">
