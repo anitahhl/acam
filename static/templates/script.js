@@ -17,6 +17,11 @@ $(document).ready(function(){
     $("#hintUsageBtn").click(function() {
         $('#hintUsage').hide();
         $('#main').css('display', 'grid');
+
+        // Camera Start
+        if ($(window).width() <= 767) {
+            cameraView(currentFacingMode);
+        }
     });
 
 
@@ -43,11 +48,6 @@ $(document).ready(function(){
             .catch(function(error) {
                 alert('Please allow camera access.');
             });
-    }
-
-    // Camera Start
-    if ($(window).width() <= 767) {
-        cameraView(currentFacingMode);
     }
 
 
