@@ -260,8 +260,7 @@ $(document).ready(function(){
                         console.log("Response Text:", xhr.responseText);
                     },
                     complete: function () {
-                        //$(".loading-overlay").css("display", "none");
-                        console.log("Response Text:", "Complete");
+                        console.log("Response Text:", "complete");
                     }
                 });
             })
