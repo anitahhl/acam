@@ -24,9 +24,9 @@ def stylize(_style_model, style_index, content_image, output_image):
     utils.save_image(output_image, result)
 
 
-def get_result(input_image, style_index):
+def get_result(unique_filename, input_image, style_index):
     model_path = "./static/model.ckpt"
-    output_image = "./static/images/output-images/result.jpg"
+    output_image = f"./static/images/output-images/{unique_filename}_result.png"
 
     model = load_model(model_path)
     stylize(model, style_index, input_image, output_image)

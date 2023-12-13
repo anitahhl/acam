@@ -3,7 +3,7 @@ setTimeout(function () {
     $("#welcome").fadeOut(0);
     document.getElementById("hintWifi").style.display="grid";
     console.log('Why did you open the console? (⑉･̆⌓･̆⑉)');
-}, 500);
+}, 2000);
 
 
 $(document).ready(function(){

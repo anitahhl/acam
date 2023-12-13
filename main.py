@@ -24,17 +24,15 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
     error = None
 
     try:
-        unique_filename = str(uuid.uuid4()) + ".png"
-        temp_file = f"./static/images/content-images/{unique_filename}"
+        unique_filename = str(uuid.uuid4())
+        temp_file = f"./static/images/content-images/{unique_filename}" + ".png"
 
         with Image.open(file.file) as img:
             img = ImageOps.exif_transpose(img)
             img.save(temp_file)
 
-        result = style.get_result(temp_file, int(style_index))
+        result = style.get_result(unique_filename, temp_file, int(style_index))
 
-        final_file = f"./static/images/content-images/{unique_filename}"
-        os.rename(temp_file, final_file)
     except Exception as ex:
         error = str(ex)
     finally:
