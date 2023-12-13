@@ -240,34 +240,27 @@ $(document).ready(function(){
             .then(response => response.blob())
             .then(blob => {
                 formData.append("file", blob, "content.png");
-                
-                $.ajax({
+
+                // Move AJAX request inside the fetch then block
+                return $.ajax({
                     type: "POST",
                     url: "/",
                     data: formData,
                     contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        if (data.result) {
-                            $("#photoView").attr("src", data.result + "?timestamp=" + new Date().getTime());
-                            $(".loading-overlay").css("display", "none");
-                        } else {
-                            console.error("Error:", data.error);
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error("Ajax request error. Status:", status, "Error:", error);
-                        console.log("Response Text:", xhr.responseText);
-                    },
-                    complete: function () {
-                        console.log("Response Text:", "complete");
-                    }
+                    processData: false
                 });
+            })
+            .then(data => {
+                if (data.result) {
+                    $("#photoView").attr("src", data.result);
+                    $(".loading-overlay").css("display", "none");
+                } else {
+                    console.error("Error:", data.error);
+                }
             })
             .catch(error => {
                 console.error("Error fetching original image:", error);
                 $(".loading-overlay").css("display", "none");
             });
-        }
-    );    
-});
+    }  
+)});

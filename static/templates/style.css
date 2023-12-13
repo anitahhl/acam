@@ -28,6 +28,10 @@ body {
     object-fit: cover;
 }
 
+#photoView {
+    will-change: transform;
+}
+
 .loading-overlay {
     display: none;
     position: fixed;
