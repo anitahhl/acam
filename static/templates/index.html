@@ -24,7 +24,7 @@
     <script src="{{ url_for('static', path='/templates/script.js') }}" crossorigin="anonymous"></script>
 </head>
 
-<body class="w-full min-h-screen">
+<body class="w-full h-screen overflow-y-hidden">
     <!-- Desktop -->
     <div id="desktop" class="hidden h-screen sm:grid gap-7 justify-items-center place-content-center">
         <img class="w-24" src="{{ url_for('static', path='/images/web-qrcode.png') }}">
@@ -37,7 +37,7 @@
         <!-- Welcome -->
         <div id="welcome" class="h-screen bg-white grid justify-items-center items-end">
             <div id="applogo" class="w-full">
-                <p class="text-center text-4xl">anthropo_cam</p>
+                <p class="text-center text-4xl">AnthropoCam</p>
             </div>
             <div class="mb-24">
                 <img class="h-5 border border-black" src="{{ url_for('static', path='/images/logo.png') }}" alt="logo">
@@ -47,7 +47,7 @@
         <!-- Hint Wifi -->
         <div id="hintWifi" class="hidden h-screen bg-white justify-items-center items-end p-10">
             <div id="applogo" class="w-full">
-                <p class="text-center text-md">建議在網路訊號良好的地方進行體驗</p>
+                <p class="text-center text-md">建議在網路訊號良好的地方進行體驗。</p>
                 <br><p class="text-center text-md">Suggest experiencing it in a location with a strong internet signal.</p>
             </div>
             <div class="mb-24">
@@ -58,8 +58,7 @@
         <!-- Hint Usage -->
         <div id="hintUsage" class="hidden h-screen bg-white justify-items-center items-end p-10">
             <div id="applogo" class="w-full">
-                <p class="text-center text-md font-bold">使用說明</p>
-                <p class="text-center text-md"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的風格轉換</p>
+                <p class="text-center text-md"><br>點擊快門圓圈拍攝照片，接著選擇喜歡的風格，開始轉換！</p>
                 <br><p class="text-center text-md">Capture a photo by clicking the shutter button, then choose your preferred style for transformation.</p>
             </div>
             <div class="mb-24">
@@ -98,16 +97,17 @@
 
                 <div id="photoPage" class="hidden flex flex-col min-h-full">
                     <div class="flex justify-between px-5 py-3">
-                        <button id="goBack" class="p-1"><i class="fa-solid fa-chevron-left fa-lg"></i></button>
+                        <button id="goBack" class="p-1 px-2"><i class="fa-solid fa-chevron-left fa-lg"></i></button>
+                        <img class="h-8" src="{{ url_for('static', path='/images/anthropocam_logo.png') }}">
                         <button id="download" class="p-1"><i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i></button>
                     </div>
     
                     <div id="photoViewContainer" class="viewContainer w-full relative flex items-center">
-                        <img id="photoView" class="h-full object-cover" src="{{ url_for('static', path='/images/style-images/gray.png') }}">
+                        <img id="photoView" class="h-full" alt="photo" src="{{ url_for('static', path='/images/style-images/gray.png') }}">
                     </div>
 
                     <!-- Select Style -->
-                    <div id="styleSelection" class="w-full py-8 grid justify-items-left items-center flex-1 px-2">
+                    <div id="styleSelection" class="w-full py-6 grid justify-items-left items-center flex-1 px-2">
                         <div class="flex overflow-x-scroll">
                             <button class="style-button grid content-between justify-items-center p-2" data-style="0">
                                 <div class="w-24 h-28">
