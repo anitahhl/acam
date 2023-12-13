@@ -8,7 +8,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def load_model(model_path):
     print('load model')
-    ckpt = torch.load('/static/model.ckpt', map_location=device)
+    ckpt = torch.load('./static/model.ckpt', map_location=device)
     model = StyleTransferNetwork()
     model.load_state_dict(ckpt['state_dict'])
     model.eval()
@@ -25,8 +25,8 @@ def stylize(_style_model, style_index, content_image, output_image):
 
 
 def get_result(unique_filename, input_image, style_index):
-    model_path = "/static/model.ckpt"
-    output_image = f"/static/images/output-images/{unique_filename}_result.png"
+    model_path = "./static/model.ckpt"
+    output_image = f"./static/images/output-images/{unique_filename}_result.png"
 
     model = load_model(model_path)
     stylize(model, style_index, input_image, output_image)

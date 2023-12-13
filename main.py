@@ -10,7 +10,7 @@ import uuid
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="/static/templates")
+templates = Jinja2Templates(directory="./static/templates")
 
 
 @app.get("/")
@@ -25,7 +25,7 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
 
     try:
         unique_filename = str(uuid.uuid4())
-        temp_file = f"/static/images/content-images/{unique_filename}" + ".png"
+        temp_file = f"./static/images/content-images/{unique_filename}" + ".png"
 
         with Image.open(file.file) as img:
             img = ImageOps.exif_transpose(img)
