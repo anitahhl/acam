@@ -37,10 +37,7 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
         if os.path.exists(temp_file):
             os.remove(temp_file)
 
-        if result:
-            return FileResponse(result, media_type="image/png")
-        else:
-            return {"error": "Empty file."}
+        return {"result": result, "error": error}
 
     except Exception as ex:
         return {"error": str(ex)}
