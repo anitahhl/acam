@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.templating import Jinja2Templates
-from fastapi.response import FileResponse
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
 import uvicorn
