@@ -251,8 +251,9 @@ $(document).ready(function(){
             })
             .then(data => {
                 if (data) {
+                    console.log('get data')
                     const imageURL = URL.createObjectURL(data);
-                    alert(imageURL);
+                    console.log(imageURL);
                     function imageLoadCallback() {
                         $(".loading-overlay").css("display", "none");
                     }
