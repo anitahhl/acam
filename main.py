@@ -42,9 +42,9 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
 
     if result:
         return StreamingResponse(content=result, media_type="image/png", headers={"Content-Disposition": "inline"})
-    
-    os.remove(result)
-    return {"error": error}
+        os.remove(result)
+    else:
+        return {"error": error}
 
 
 if __name__ == "__main__":
