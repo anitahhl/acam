@@ -240,34 +240,30 @@ $(document).ready(function(){
             .then(blob => {
                 formData.append("file", blob, "content.png");
 
-                return fetch("/", {
-                    method: "POST",
-                    body: formData,
+                // Move AJAX request inside the fetch then block
+                return $.ajax({
+                    type: "POST",
+                    url: "/",
+                    data: formData,
+                    contentType: false,
+                    processData: false
                 });
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.blob();
+            .then(data => {
+                if (data) {
+                    function imageLoadCallback() {
+                        $(".loading-overlay").css("display", "none");
+                    }
+                    
+                    $("#photoView").on("load", imageLoadCallback);
+                    $("#photoView").attr("src", data);
                 } else {
-                    return response.json().then(data => {
-                        throw new Error(`Server error: ${data.error}`);
-                    });
+                    console.error("Error:", data.error);
                 }
-            })
-            .then(blob => {
-                const imageUrl = URL.createObjectURL(blob);
-
-                function imageLoadCallback() {
-                    $(".loading-overlay").css("display", "none");
-                }
-
-                $("#photoView").on("load", imageLoadCallback);
-                $("#photoView").attr("src", imageUrl);
             })
             .catch(error => {
-                console.error("Error:", error);
+                console.error("Error fetching original image:", error);
                 $(".loading-overlay").css("display", "none");
             });
-
     }  
 )});
