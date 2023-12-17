@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
 import uvicorn
@@ -33,17 +33,19 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
             img.save(temp_file)
 
         result = style.get_result(unique_filename, temp_file, int(style_index))
-        os.remove(temp_file)
+
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
+
+        if result:
+            return FileResponse(result)
+        else:
+            return JSONResponse(content={"error": "Result is empty"}, status_code=500)
 
     except Exception as ex:
-        error = str(ex)
+        return JSONResponse(content={"error": str(ex)}, status_code=500)
     finally:
         file.file.close()
-
-    if result:
-        return FileResponse(result)
-    else:
-        return {"error": error}
 
 
 if __name__ == "__main__":
