@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
 import uvicorn
@@ -40,7 +40,10 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
     finally:
         file.file.close()
 
-    return {"result": result, "error": error}
+    if result:
+        return FileResponse(result)
+    else:
+        return {"error": error}
 
 
 if __name__ == "__main__":
