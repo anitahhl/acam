@@ -235,36 +235,39 @@ $(document).ready(function(){
         var formData = new FormData();
         formData.append("style_index", styleIndex);
 
-        // Check if the original image source is not empty
         fetch(originalImageSrc)
             .then(response => response.blob())
             .then(blob => {
                 formData.append("file", blob, "content.png");
 
-                // Move AJAX request inside the fetch then block
-                return $.ajax({
-                    type: "POST",
-                    url: "/",
-                    data: formData,
-                    contentType: false,
-                    processData: false
+                return fetch("/", {
+                    method: "POST",
+                    body: formData,
                 });
             })
-            .then(data => {
-                if (data.result) {
-                    function imageLoadCallback() {
-                        $(".loading-overlay").css("display", "none");
-                    }
-                    
-                    $("#photoView").on("load", imageLoadCallback);
-                    $("#photoView").attr("src", data.result);
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();
                 } else {
-                    console.error("Error:", data.error);
+                    return response.json().then(data => {
+                        throw new Error(`Server error: ${data.error}`);
+                    });
                 }
             })
+            .then(blob => {
+                const imageUrl = URL.createObjectURL(blob);
+
+                function imageLoadCallback() {
+                    $(".loading-overlay").css("display", "none");
+                }
+
+                $("#photoView").on("load", imageLoadCallback);
+                $("#photoView").attr("src", imageUrl);
+            })
             .catch(error => {
-                console.error("Error fetching original image:", error);
+                console.error("Error:", error);
                 $(".loading-overlay").css("display", "none");
             });
+
     }  
 )});
