@@ -38,10 +38,7 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
             os.remove(temp_file)
 
         if result:
-            return FileResponse(
-                result,
-                background=BackgroundTask(os.remove, result)
-                )
+            return FileResponse(result, media_type="image/png")
             print('FileResponse success')
         else:
             return {"error": "Empty file."}
