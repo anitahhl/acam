@@ -250,8 +250,8 @@ $(document).ready(function(){
                 });
             })
             .then(data => {
-                if (data.result) {
-                    const imageUrl = URL.createObjectURL(data.result);
+                if (data) {
+                    const imageUrl = URL.createObjectURL(data);
 
                     function imageLoadCallback() {
                         $(".loading-overlay").css("display", "none");
