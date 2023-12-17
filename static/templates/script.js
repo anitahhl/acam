@@ -250,15 +250,13 @@ $(document).ready(function(){
                 });
             })
             .then(data => {
-                if (data) {
-                    const imageUrl = URL.createObjectURL(data);
-
+                if (data.result) {
                     function imageLoadCallback() {
                         $(".loading-overlay").css("display", "none");
                     }
                     
                     $("#photoView").on("load", imageLoadCallback);
-                    $("#photoView").attr("src", imageUrl);
+                    $("#photoView").attr("src", data.result);
                 } else {
                     console.error("Error:", data.error);
                 }

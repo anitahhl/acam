@@ -37,10 +37,7 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
         if os.path.exists(temp_file):
             os.remove(temp_file)
 
-        if result:
-            return FileResponse(result)
-        else:
-            return JSONResponse(content={"error": "Result is empty"}, status_code=500)
+        return {"result": result, "error": error}
 
     except Exception as ex:
         return JSONResponse(content={"error": str(ex)}, status_code=500)
