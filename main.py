@@ -32,6 +32,7 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
             img.save(temp_file)
 
         result = style.get_result(unique_filename, temp_file, int(style_index))
+        os.remove(temp_file)
 
     except Exception as ex:
         error = str(ex)
