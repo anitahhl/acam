@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.templating import Jinja2Templates
+from fastapi.response import FileResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
 import uvicorn
@@ -16,16 +17,6 @@ templates = Jinja2Templates(directory="./static/templates")
 @app.get("/")
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-
-
-@app.get("/images/{image_id}")
-async def get_image(image_id: str):
-    file_path = f"./static/images/output-images/{image_id}.png"
-
-    if os.path.exists(file_path):
-        return StreamingResponse(open(file_path, "rb"), media_type="image/png")
-    else:
-        return StreamingResponse(open("result.png", "rb"), media_type="image/png")
     
     
 @app.post("/")
@@ -46,11 +37,20 @@ async def transfer(style_index: str = Form(...), file: UploadFile = File(...)):
         if os.path.exists(temp_file):
             os.remove(temp_file)
 
-        return {"result": result, "error": error}
+        if result:
+            return FileResponse(
+                result,
+                background=BackgroundTask(os.remove, result)
+                )
+            print('FileResponse success')
+        else:
+            return {"error": "Empty file."}
 
     except Exception as ex:
         return {"error": str(ex)}
     finally:
+        os.remove(result)
+        print('remove file success')
         file.file.close()
 
 
