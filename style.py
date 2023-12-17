@@ -26,7 +26,7 @@ def stylize(_style_model, style_index, content_image, output_image):
 
 def get_result(unique_filename, input_image, style_index):
     model_path = "./static/model.ckpt"
-    output_image = f"./static/images/output-images/{unique_filename}.png"
+    output_image = f"./static/images/{unique_filename}.png"
 
     model = load_model(model_path)
     stylize(model, style_index, input_image, output_image)
